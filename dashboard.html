@@ -16,7 +16,11 @@
     <h1>Tableau de bord</h1>
     <p class="mute">Connecte-toi avec ton e-mail pour accéder à tes projets.</p>
     <label>E-mail<input id="login-email" type="email" placeholder="toi@exemple.com" autocomplete="email"></label>
-    <button class="pri" id="login-send">Recevoir un lien de connexion</button>
+    <button class="pri" id="login-send">Recevoir un code</button>
+    <div id="login-otp" hidden>
+      <label>Code reçu par e-mail<input id="login-code" inputmode="numeric" maxlength="6" placeholder="123456"></label>
+      <button class="pri" id="login-verify">Se connecter</button>
+    </div>
     <p class="mute" id="login-msg" hidden></p>
   </div>
 </main>

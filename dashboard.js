@@ -23,10 +23,20 @@ function toast(msg) {
 $('#login-send').onclick = async () => {
   const email = $('#login-email').value.trim();
   if (!email) return toast("Indique ton e-mail");
-  const { error } = await sb.auth.signInWithOtp({ email, options: { emailRedirectTo: location.href } });
+  const { error } = await sb.auth.signInWithOtp({ email });
   const m = $('#login-msg');
   m.hidden = false;
-  m.textContent = error ? "Erreur : " + error.message : "Lien envoyé, regarde ta boîte mail.";
+  m.textContent = error ? "Erreur : " + error.message : "Code envoyé, regarde ta boîte mail.";
+  if (!error) $('#login-otp').hidden = false;
+};
+$('#login-verify').onclick = async () => {
+  const email = $('#login-email').value.trim();
+  const token = $('#login-code').value.trim();
+  if (!token) return toast('Entre le code reçu par e-mail');
+  const { error } = await sb.auth.verifyOtp({ email, token, type: 'email' });
+  const m = $('#login-msg');
+  m.hidden = false;
+  m.textContent = error ? "Erreur : " + error.message : '';
 };
 $('#logout').onclick = async () => { await sb.auth.signOut(); location.reload(); };
 
