@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tableau de bord · BARA WRLD</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&family=Archivo+Black&display=swap">
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+<!-- Écran de connexion -->
+<main id="login-screen" class="auth">
+  <div class="auth-box">
+    <small>BARA WRLD</small>
+    <h1>Tableau de bord</h1>
+    <p class="mute">Connecte-toi avec ton e-mail pour accéder à tes projets.</p>
+    <label>E-mail<input id="login-email" type="email" placeholder="toi@exemple.com" autocomplete="email"></label>
+    <button class="pri" id="login-send">Recevoir un lien de connexion</button>
+    <p class="mute" id="login-msg" hidden></p>
+  </div>
+</main>
+
+<!-- Application -->
+<main id="app" hidden>
+<div class="hero">
+  <div class="bar" style="margin-top:0">
+    <small>BARA WRLD</small>
+    <button id="logout">Se déconnecter</button>
+  </div>
+  <h1>Tableau de bord</h1>
+  <div class="stats" id="stats"></div>
+  <div class="todo" id="todo"></div>
+</div>
+
+<div class="bar"><h2>Projets</h2><button class="pri" id="nb">Nouveau projet</button></div>
+<div class="new" id="nf" hidden>
+  <label>Client<input id="f-n" placeholder="Nom du client"></label>
+  <label>Type de projet
+    <select id="f-t"><option value="identity">Identité visuelle + visuels</option><option value="visuals">Visuels seuls</option></select>
+  </label>
+  <label>Description<textarea id="f-d" rows="2"></textarea></label>
+  <label>Deadline<input id="f-dl" type="date"></label>
+  <label>Prix (FCFA), visible par toi seulement<input id="f-p" type="number" inputmode="numeric"></label>
+  <div class="row"><button class="pri" id="f-ok">Créer le projet et son lien</button><button id="f-no">Annuler</button></div>
+</div>
+
+<div class="chips" id="chips"></div>
+<div id="list"></div>
+
+<h2>Prochains rendez-vous</h2>
+<div id="rdv"></div>
+</main>
+
+<div id="toast" role="status"></div>
+
+<script type="module" src="dashboard.js"></script>
+</body>
+</html>
